@@ -23,31 +23,31 @@ Every cell is **16 × 16** pixels, with a **32**-pixel-tall header on top.
 
 Asset list
 
-![Minesweeper assets](minesweeper/assets/_preview/cells.png)
+![Minesweeper assets](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/minesweeper/cells.png)
 
 In-game screens (by map size, win and lose screens)
 
-![Minesweeper in-game screens](minesweeper/assets/_preview/demo_sizes.png)
+![Minesweeper in-game screens](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/minesweeper/demo_sizes.png)
 
 ## Snake
 
 Asset list
 
-![Snake assets](snake/assets/_preview/cells.png)
+![Snake assets](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/snake/cells.png)
 
 In-game screens (by map size, game over screen)
 
-![Snake in-game screens](snake/assets/_preview/demo_sizes.png)
+![Snake in-game screens](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/snake/demo_sizes.png)
 
 ## Tetris
 
 Asset list
 
-![Tetris assets](tetris/assets/_preview/cells.png)
+![Tetris assets](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/tetris/cells.png)
 
 In-game screens (by board size, game over screen)
 
-![Tetris in-game screens](tetris/assets/_preview/demo_sizes.png)
+![Tetris in-game screens](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/tetris/demo_sizes.png)
 
 ---
 

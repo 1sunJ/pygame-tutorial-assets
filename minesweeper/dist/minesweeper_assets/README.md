@@ -5,11 +5,11 @@
 `minesweeper_assets` 폴더를 내 게임 코드(`main.py`)와 **같은 위치**에 넣고 사용하세요.
 
 ## 미리보기
-![에셋 목록](../../assets/_preview/cells.png)
+![에셋 목록](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/minesweeper/cells.png)
 
 실제 게임 화면 (맵 크기별)
 
-![실제 게임 화면](../../assets/_preview/demo_sizes.png)
+![실제 게임 화면](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/minesweeper/demo_sizes.png)
 
 ## 크기 규칙
 - 칸 하나: **16 × 16**

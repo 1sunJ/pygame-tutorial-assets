@@ -5,11 +5,11 @@
 Put the `tetris_assets` folder **in the same place** as your game code (`main.py`).
 
 ## Preview
-![Asset list](../../assets/_preview/cells.png)
+![Asset list](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/tetris/cells.png)
 
 In-game screens (by board size)
 
-![In-game screens](../../assets/_preview/demo_sizes.png)
+![In-game screens](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/tetris/demo_sizes.png)
 
 ## Size rules
 - One cell: **16 × 16**

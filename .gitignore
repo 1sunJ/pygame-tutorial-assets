@@ -15,12 +15,6 @@
 # 3) 압축 파일은 제외
 *.zip
 
-# 4) 레포 첫 화면 README 와 미리보기 이미지 (에셋 목록 + 실제 게임 화면)
+# 4) 레포 첫 화면 README (미리보기 이미지는 previews 브랜치에 있다)
 !/README.md
 !/README.en.md
-!/*/assets/
-/*/assets/*
-!/*/assets/_preview/
-/*/assets/_preview/*
-!/*/assets/_preview/cells.png
-!/*/assets/_preview/demo_sizes.png

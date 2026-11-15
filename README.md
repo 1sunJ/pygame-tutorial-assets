@@ -23,31 +23,31 @@ pygame으로 미니게임을 만들 때 쓰는 픽셀아트 에셋입니다.
 
 에셋 목록
 
-![지뢰찾기 에셋](minesweeper/assets/_preview/cells.png)
+![지뢰찾기 에셋](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/minesweeper/cells.png)
 
 실제 게임 화면 (맵 크기별, 승리·패배 화면)
 
-![지뢰찾기 게임 화면](minesweeper/assets/_preview/demo_sizes.png)
+![지뢰찾기 게임 화면](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/minesweeper/demo_sizes.png)
 
 ## 스네이크
 
 에셋 목록
 
-![스네이크 에셋](snake/assets/_preview/cells.png)
+![스네이크 에셋](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/snake/cells.png)
 
 실제 게임 화면 (맵 크기별, 게임 오버 화면)
 
-![스네이크 게임 화면](snake/assets/_preview/demo_sizes.png)
+![스네이크 게임 화면](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/snake/demo_sizes.png)
 
 ## 테트리스
 
 에셋 목록
 
-![테트리스 에셋](tetris/assets/_preview/cells.png)
+![테트리스 에셋](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/tetris/cells.png)
 
 실제 게임 화면 (보드 크기별, 게임 오버 화면)
 
-![테트리스 게임 화면](tetris/assets/_preview/demo_sizes.png)
+![테트리스 게임 화면](https://github.com/1sunJ/pygame-tutorial-assets/raw/previews/tetris/demo_sizes.png)
 
 ---
 
