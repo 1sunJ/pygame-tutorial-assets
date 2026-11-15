@@ -1,0 +1,16 @@
+# 학생용 에셋만 올린다: <game>/dist/<game>_assets/ (PNG, fonts, README.md)
+# 코드(build.py, demo.py, tools/), 작업용 assets/, 문서, zip 은 모두 제외
+
+# 1) 일단 전부 무시
+/*
+!/.gitignore
+
+# 2) 게임 폴더 → dist → <game>_assets 만 다시 허용 (새 게임도 자동으로 포함)
+!/*/
+/*/*
+!/*/dist/
+/*/dist/*
+!/*/dist/*_assets/
+
+# 3) 압축 파일은 제외
+*.zip
