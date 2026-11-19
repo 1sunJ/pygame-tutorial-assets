@@ -28,6 +28,8 @@
 | `cells/cell_empty.png` | 16×16 | 연 칸, 주변 지뢰 0개 |
 | `cells/cell_1.png` ~ `cell_9.png` | 16×16 | 연 칸, 주변 지뢰 n개 |
 | `cells/cell_mine.png` | 16×16 | 열었는데 지뢰인 칸 |
+| `cells/open_anim/open_0.png` ~ `open_5.png` | 32×32 (투명 배경) | 칸이 열릴 때 터지는 애니메이션 (아래 설명) |
+| `cells/open_anim_fire/open_0.png` ~ `open_6.png` | 32×32 (투명 배경) | 위와 같은데 불꽃이 터지는 버전 |
 | `screens/win.png` | 256×288 (투명 배경) | 이겼을 때 |
 | `screens/lose.png` | 256×288 (투명 배경) | 졌을 때 |
 | `fonts/Silkscreen-Regular.ttf` | | 숫자를 그릴 때 쓰는 폰트 (크기 **16**) |
@@ -90,6 +92,40 @@ for r in range(ROWS):
         screen.blit(closed, (c * 16, 32 + r * 16))              # 칸 (c, r) 위치
 pygame.display.flip()
 ```
+
+## 칸 여는 애니메이션
+칸을 열면 닫힌 칸이 금이 가고 → 번쩍 → 조각나 사방으로 튀는 6장짜리 애니메이션입니다.
+
+- 프레임은 **32×32** 이고, 칸(16×16)이 가운데에 있습니다. 그래서 칸 위치에서 **8씩 빼서** 그립니다.
+- 칸은 먼저 **열린 그림**(`cell_1` 등)으로 그리고, 그 위에 프레임을 덮어 그립니다. 0번 프레임이 닫힌 칸을 그대로 덮어줍니다.
+- 조각이 옆 칸까지 튀니까 **보드 칸을 전부 그린 다음에** 애니메이션을 그리고, 헤더는 그 뒤에 그리세요.
+- 한 장에 40ms 정도면 자연스럽습니다 (전체 0.24초).
+- **불꽃 버전**을 쓰려면 폴더를 `open_anim_fire` 로, 장수를 `range(7)` 로 바꾸면 됩니다. 크기와 그리는 방법은 똑같습니다.
+
+```python
+open_anim = [pygame.image.load(A + f"cells/open_anim/open_{i}.png").convert_alpha()
+             for i in range(6)]
+FRAME_MS = 40
+opening = {}                       # (c, r) -> 그 칸을 연 시각
+
+# 칸 (c, r) 을 열 때
+opening[(c, r)] = pygame.time.get_ticks()
+
+# 그릴 때: 보드 칸을 다 그린 다음에
+now = pygame.time.get_ticks()
+for (c, r), start in list(opening.items()):
+    i = (now - start) // FRAME_MS          # 지금 몇 번째 프레임인지
+    if i >= len(open_anim):
+        del opening[(c, r)]                # 다 끝났으면 지운다
+        continue
+    if i < 0:                              # 아직 시작 전 (아래 팁)
+        screen.blit(closed, (c * 16, 32 + r * 16))
+        continue
+    screen.blit(open_anim[i], (c * 16 - 8, 32 + r * 16 - 8))
+```
+
+팁: 빈 칸이 연달아 열릴 때 처음 누른 칸에서 멀수록 늦게 시작하면 파도처럼 퍼집니다.
+`opening[(c, r)] = now + 거리 * 40` 처럼 시작 시각을 미뤄 주세요.
 
 ## 숫자 위치 정리
 | 어디에 | 사각형 (x, y, 너비, 높이) | 글자 색 (R, G, B) |

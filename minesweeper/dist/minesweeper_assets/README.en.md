@@ -28,6 +28,8 @@ In-game screens (by map size)
 | `cells/cell_empty.png` | 16×16 | An opened cell with 0 mines around it |
 | `cells/cell_1.png` ~ `cell_9.png` | 16×16 | An opened cell with n mines around it |
 | `cells/cell_mine.png` | 16×16 | An opened cell that was a mine |
+| `cells/open_anim/open_0.png` ~ `open_5.png` | 32×32 (transparent background) | Burst animation when a cell opens (see below) |
+| `cells/open_anim_fire/open_0.png` ~ `open_6.png` | 32×32 (transparent background) | Same, but with a fiery explosion |
 | `screens/win.png` | 256×288 (transparent background) | When you win |
 | `screens/lose.png` | 256×288 (transparent background) | When you lose |
 | `fonts/Silkscreen-Regular.ttf` | | Font for drawing numbers (size **16**) |
@@ -90,6 +92,40 @@ for r in range(ROWS):
         screen.blit(closed, (c * 16, 32 + r * 16))              # position of cell (c, r)
 pygame.display.flip()
 ```
+
+## Cell opening animation
+When a cell opens, the closed cell cracks → flashes → breaks into pieces that fly outward. 6 frames.
+
+- Frames are **32×32** with the cell (16×16) in the middle, so draw them **8 pixels up and left** of the cell position.
+- Draw the cell as **opened** first (`cell_1` etc.), then draw the frame on top. Frame 0 covers it with the closed cell.
+- Pieces fly into neighbor cells, so draw the animation **after all board cells**, and draw the header after that.
+- About 40 ms per frame looks natural (0.24 s in total).
+- For the **fire version**, change the folder to `open_anim_fire` and the count to `range(7)`. Size and drawing are exactly the same.
+
+```python
+open_anim = [pygame.image.load(A + f"cells/open_anim/open_{i}.png").convert_alpha()
+             for i in range(6)]
+FRAME_MS = 40
+opening = {}                       # (c, r) -> time the cell was opened
+
+# when you open cell (c, r)
+opening[(c, r)] = pygame.time.get_ticks()
+
+# when drawing: after drawing all board cells
+now = pygame.time.get_ticks()
+for (c, r), start in list(opening.items()):
+    i = (now - start) // FRAME_MS          # which frame to show now
+    if i >= len(open_anim):
+        del opening[(c, r)]                # finished, remove it
+        continue
+    if i < 0:                              # not started yet (see tip)
+        screen.blit(closed, (c * 16, 32 + r * 16))
+        continue
+    screen.blit(open_anim[i], (c * 16 - 8, 32 + r * 16 - 8))
+```
+
+Tip: when empty cells open in a chain, start the cells farther from the clicked one a bit later and it spreads like a wave.
+Delay the start time, like `opening[(c, r)] = now + distance * 40`.
 
 ## Where to draw numbers
 | Where | Rect (x, y, width, height) | Text color (R, G, B) |
